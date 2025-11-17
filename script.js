@@ -11,8 +11,22 @@ async function getDashboardData(query){
 
     return {
         city: resultDestination[0].name,
-        country: resultDestination[0].country
+        country: resultDestination[0].country,
+        temperature : resultWeather[0].temperature,
+        weather: resultWeather[0].weather_description,
+        airport: resultAirport[0].name
+
+        
     }
 }
 
 getDashboardData('london')
+    .then(data => {
+        console.log('Dasboard data:', data);
+        console.log(
+            `${data.city} is in ${data.country}.\n` +
+            `Today there are ${data.temperature} degrees and the weather is ${data.weather}.\n`+
+            `The main airport is ${data.airport}.\n`
+        );
+    })
+    .catch(error => console.error(error));
