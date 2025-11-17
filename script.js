@@ -1,5 +1,8 @@
 async function getDashboardData(query){
 
+    const endPoints = ['destinations','weathers','airports'];
+    const promises = endPoints.map(endPoint => fetch(`http://localhost:3333/${endPoint}?search=${query}`).then(res => res.json()))
+
 try{
     const destinations = fetch(`http://localhost:3333/destinations?search=${query}`).then(res => res.json());
     const weathers = fetch(`http://localhost:3333/weathers?search=${query}`).then(res => res.json());
